@@ -30,7 +30,10 @@ services:
   - docker
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew tap Homebrew/bundle && brew bundle --verbose; fi
+    #  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update && brew tap Homebrew/bundle && brew bundle --verbose; fi
+    - brew update
+    - brew tap Homebrew/bundle 
+    - brew bundle --verbose; fi
 
 env:
   global:
@@ -38,8 +41,8 @@ env:
     - BUILD_DIR=/build/darktable-build
     - INSTALL_PREFIX=/build/darktable-install
     - CFLAGS=-pipe CXXFLAGS=-pipe
-  matrix:
-    - CC=cc CXX=c++ TARGET=build # default system compiler, all platforms
+#  matrix:
+#    - CC=cc CXX=c++ TARGET=build # default system compiler, all platforms
 
 matrix:
   fast_finish: true
