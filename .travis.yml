@@ -41,14 +41,16 @@ env:
     - BUILD_DIR=/build/darktable-build
     - INSTALL_PREFIX=/build/darktable-install
     - CFLAGS=-pipe CXXFLAGS=-pipe
+    - CC=gcc-6 CXX=c++ TARGET=build # can't use CXX=g++-6 fails for osx.mm
+#  fast_finish: true
 #  matrix:
 #    - CC=cc CXX=c++ TARGET=build # default system compiler, all platforms
 
-matrix:
-  fast_finish: true
-  include:
-  - os: osx
-    env: CC=gcc-6 CXX=c++ TARGET=build # can't use CXX=g++-6 fails for osx.mm
+#matrix:
+#  fast_finish: true
+#  include:
+#  - os: osx
+#    env: CC=gcc-6 CXX=c++ TARGET=build # can't use CXX=g++-6 fails for osx.mm
 
 script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
