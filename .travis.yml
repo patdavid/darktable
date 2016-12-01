@@ -64,7 +64,9 @@ script:
     fi
 
 after_success:
-    - cd ~/src
+    - cd "$SRC_DIR"
+    - pwd
+    - ls
     - curl -O http://ftp.gnome.org/pub/gnome/sources/gtk-mac-bundler/0.7/gtk-mac-bundler-0.7.4.tar.xz
     - tar -xf gtk-mac-bundler-0.7.4.tar.xz
     - cd gtk-mac-bundler-0.7.4
